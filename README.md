@@ -1,3 +1,8 @@
+# Setting a XState Machine from Scratch for Managing States Api Calls
+
+The base repo is a cra "fork" from sturdy-uis by Isaac Mann wich I've removed Typescripts dependencies to focus on configuring a State Machine with React and Javascript.
+[Isaac Mann base repo based in CRA with Typescript](https://github.com/isaacplmann/sturdy-uis)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
