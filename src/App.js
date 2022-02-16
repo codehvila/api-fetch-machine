@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { fetchPeople } from "./api";
+import "./App.css";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [results, setResults] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  function fetchData() {
+    setIsLoading(true);
+    fetchPeople()
+      .then((r) => r.results)
+      .then(
+        (res) => {
+          setResults(res);
+          setIsLoading(false);
+        },
+        (message) => {
+          setErrorMessage(message);
+          setIsLoading(false);
+        }
+      );
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => fetchData()}>Fetch</button>
+      {isLoading ? <p>Loading</p> : null}
+      {!isLoading && !errorMessage ? (
+        <ul>
+          {results &&
+            results.map((person, index) => <li key={index}>{person.name}</li>)}
+        </ul>
+      ) : null}
+      {!isLoading && errorMessage ? <p>{errorMessage}</p> : null}
     </div>
   );
 }
