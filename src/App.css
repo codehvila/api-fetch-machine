@@ -28,6 +28,57 @@
   color: #61dafb;
 }
 
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 88vh;
+}
+
+.wrapper div {
+  text-align: left;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.label {
+  padding: 9px 15px 7px 15px;
+  color: #333;
+  font-size: 0.8rem;
+}
+
+.idle {
+  background-color: orange;
+}
+.loading {
+  background-color: orangered;
+}
+.successful {
+  background-color: green;
+  color: #ddd;
+}
+.error {
+  background-color: red;
+  color: #eee;
+}
+
+button {
+  color: #333;
+  background-color: #ccc;
+}
+button:hover {
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #eee;
+  color: #ccc;
+  cursor: wait;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
