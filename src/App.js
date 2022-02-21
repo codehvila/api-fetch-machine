@@ -9,39 +9,38 @@ function App() {
 
   const [rstate, setRState] = useState(null);
 
-  const STATES = {
-    idle: "idle",
-    loading: "loading",
-    successfull: "successful",
-    error: "error",
-  };
-
-  function dataFetchMachine() {
-    let mstate = STATES.idle;
-    setRState(STATES.idle);
-
-    return {
-      state() {
-        return mstate;
-      },
-      fetch() {
-        mstate = STATES.loading;
-        setRState(mstate);
-      },
-      resolve() {
-        mstate = STATES.successfull;
-        setRState(mstate);
-      },
-      reject() {
-        mstate = STATES.error;
-        setRState(mstate);
-      },
-    };
-  }
-
   const [dataFetch, setDataFetch] = useState();
 
   useEffect(() => {
+    const STATES = {
+      idle: "idle",
+      loading: "loading",
+      successfull: "successful",
+      error: "error",
+    };
+
+    function dataFetchMachine() {
+      let mstate = STATES.idle;
+      setRState(STATES.idle);
+
+      return {
+        state() {
+          return mstate;
+        },
+        fetch() {
+          mstate = STATES.loading;
+          setRState(mstate);
+        },
+        resolve() {
+          mstate = STATES.successfull;
+          setRState(mstate);
+        },
+        reject() {
+          mstate = STATES.error;
+          setRState(mstate);
+        },
+      };
+    }
     setDataFetch(dataFetchMachine());
   }, []);
 
